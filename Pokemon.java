@@ -88,7 +88,7 @@ public int getAntidotos() {
 		 System.out.print("Elige ataque a usar [1 - 4] --> ");
 		 
 		 ataqueSeleccionado=sc.nextInt()-1;
-		 //Si el ataque no incorrecto
+		 //Si el ataque es incorrecto
 		 if(ataqueSeleccionado<0 || ataqueSeleccionado>3){
 		 
 		 System.out.println("\nEl ataque introducido no es correcto, vuelve a intentarlo\n");
@@ -97,8 +97,6 @@ public int getAntidotos() {
 		 }
 	 
 	} while(ataqueSeleccionado<0 || ataqueSeleccionado>3);
-
-     
      
      //Si el pokemon está paralizado
      if(!(this.getEstado().equals("")) && ThreadLocalRandom.current().nextInt(1,3)==1) {

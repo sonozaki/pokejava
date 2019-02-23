@@ -100,7 +100,7 @@ public class Pokejava{
 	          System.out.println("atacar\t permite atacar al pokemon enemigo");
 	          System.out.println("pocion\t utiliza la pocion para curar a tu pokemon");
 	          System.out.println("antidoto\t utiliza el antidoto para restablecer el estado del pokemon");
-	          System.out.println("informacion\t muestra toda la información de la partida, pv, pv enemigo etc...a");
+	          System.out.println("informacion\t muestra toda la informacion de la partida, pv, pv enemigo etc...");
 	          System.out.println("exit\t cancela la partida");
 	          System.out.println("ayuda\t despliega esta ayuda");
 	          break;
