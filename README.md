@@ -1,16 +1,16 @@
-#PokeJava
+# PokeJava
 
 PokeJava es un port a Java del antiguo simulador de batallas pokemon "poketty".
 
-#¿Qué características aún faltan en esta versión?
+# ¿Qué características aún faltan en esta versión?
 
 En comparación con Poketty, PokeJava aún no incorpora un modo contra la CPU, además la consola tampoco colorea palabras clave.
 
-#¿Por qué se han eliminado los colores en PokeJava?
+# ¿Por qué se han eliminado los colores en PokeJava?
 
 No he encontrado una forma sencilla y portable de colorear la consola en Java.
 
-#¿Como cargo mis propios pokemons?
+# ¿Como cargo mis propios pokemons?
 
 PokeJava funciona con ficheros .pkm, con una sintaxis de "clave=valor" donde se guardan los atributos de cada pokemon, así como sus ataques.
 
@@ -61,7 +61,7 @@ Es importante que el estado de cada ataque tenga al menos "" después del igual,
 
 Nótese que puedes usar "#" para escribir comentarios
 
-#¿Qué comandos puedo usar en PokeJava?
+# ¿Qué comandos puedo usar en PokeJava?
 
 atacar: Ataca al pokemon enemigo, te pide seleccionar un ataque
 pocion: Cura al pokemon si tienes pociones
@@ -70,6 +70,6 @@ información: Despliega información de la partida
 ayuda: Despliega la ayuda del juego
 exit: Cancela la partida
 
-#¿Qué licencia usa?
+# ¿Qué licencia usa?
 
 PokeJava está liberado bajo la licencia GPLv2, siéntete libre de modificarlo y aprender tanto como he aprendido yo escribíendolo.
