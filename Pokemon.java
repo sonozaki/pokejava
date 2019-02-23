@@ -18,7 +18,6 @@
 
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.Random;
 
 public class Pokemon{
   private String nombre;
@@ -30,8 +29,6 @@ public class Pokemon{
 
   Ataque[] ataques;
   Scanner sc=new Scanner(System.in);
-
-  Random aleatorio=new Random(System.currentTimeMillis());  
   
   public Pokemon(String nombre, int pociones,int antidotos, Ataque[] ataques){
 	  
@@ -80,7 +77,6 @@ public int getAntidotos() {
 	 
     int index=0;
     int ataqueSeleccionado;
-    aleatorio.setSeed(System.currentTimeMillis());
 
     //Menu para seleccionar ataque
      for(Ataque ataque: ataques){
