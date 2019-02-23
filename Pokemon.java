@@ -75,17 +75,30 @@ public int getAntidotos() {
 
   public void atacar(Pokemon pokemonEnemigo){
 	 
-    int index=0;
-    int ataqueSeleccionado;
+    int index;
+    int ataqueSeleccionado=0;
+	
+	do {
+		index=0;
+		//Menu para seleccionar ataque
+		 for(Ataque ataque: ataques){
+			System.out.println(index+1+" - "+ataque.getNombre()+ " pp:"+ataque.getPp());
+			index++;
+		 }
+		 System.out.print("Elige ataque a usar [1 - 4] --> ");
+		 
+		 ataqueSeleccionado=sc.nextInt()-1;
+		 //Si el ataque no incorrecto
+		 if(ataqueSeleccionado<0 || ataqueSeleccionado>3){
+		 
+		 System.out.println("\nEl ataque introducido no es correcto, vuelve a intentarlo\n");
+		 continue;
+		 
+		 }
+	 
+	} while(ataqueSeleccionado<0 || ataqueSeleccionado>3);
 
-    //Menu para seleccionar ataque
-     for(Ataque ataque: ataques){
-        System.out.println(index+1+" - "+ataque.getNombre()+ " pp:"+ataque.getPp());
-        index++;
-     }
-     System.out.print("Elige ataque a usar [1 - 4] --> ");
-
-     ataqueSeleccionado=sc.nextInt()-1;
+     
      
      //Si el pokemon está paralizado
      if(!(this.getEstado().equals("")) && ThreadLocalRandom.current().nextInt(1,3)==1) {
