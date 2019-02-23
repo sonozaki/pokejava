@@ -1,33 +1,51 @@
+/*  Copyright 2019 Francisco Dominguez Lerma
+ 	Author: Francisco Dominguez Lerma
+  
+    This file is part of PokeJava.
+
+    PokeJava is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 2 of the License, or
+    (at your option) any later version.
+
+    PokeJava is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with PokeJava.  If not, see <https://www.gnu.org/licenses/>.*/
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Ficheros{
 	
-	public static FileReader reader;
-	public static BufferedReader fichero;
-    // Atributos de pokemon
-    public static String nombrePokemon=new String();
-    public static int pociones=0;
-    public static int antidotos=0;
-   public static  Ataque[] ataques=new Ataque[4];
-
-    // Atributos de ataques
-    public static String[] nombreAtaque=new String[4];
-    public static String[] estadoAtaque=new String[4];
-    public static int[] pp=new int[4];
-    public static int[] pdMax=new int[4];
-    public static int[] pdMin=new int[4];
-    
-    public static Pokemon miPokemon;
-	
 public static Pokemon cargarFichero(String pokemon) {
+	
+	 FileReader reader;
+	 BufferedReader fichero=null;
+    // Atributos de pokemon
+     String nombrePokemon=new String();
+     int pociones=0;
+     int antidotos=0;
+     Ataque[] ataques=new Ataque[4];
+
+     // Atributos de ataques
+     String[] nombreAtaque=new String[4];
+     String[] estadoAtaque=new String[4];
+     int[] pp=new int[4];
+     int[] pdMax=new int[4];
+     int[] pdMin=new int[4];
+    
+     Pokemon miPokemon;
 	   
     try{
     	reader=new FileReader(pokemon);
     	fichero=new BufferedReader(reader);
     
-
+    //Parseamos todos los campos del fichero pkm
     for(String linea;(linea=fichero.readLine())!=null;){
        String[] orden=linea.split("=");
        if(orden[0].equals("#")) continue;
@@ -94,14 +112,14 @@ public static Pokemon cargarFichero(String pokemon) {
             pdMin[3]=Integer.parseInt(orden[1]);
             break;
           case "nombre":
-              nombrePokemon=orden[1];
-              break;
+            nombrePokemon=orden[1];
+            break;
           case "pociones":
-              pociones=Integer.parseInt(orden[1]);
-              break;
+            pociones=Integer.parseInt(orden[1]);
+            break;
           case "antidotos":
-              antidotos=Integer.parseInt(orden[1]);
-              break;
+            antidotos=Integer.parseInt(orden[1]);
+            break;
 
        }
 
@@ -128,15 +146,10 @@ public static Pokemon cargarFichero(String pokemon) {
 
      ataques[3]=new Ataque(nombreAtaque[3], pp[3], pdMax[3],pdMin[3],estadoAtaque[3]);
      
+     //Devuelve un pokemon completamente creado
      miPokemon= new Pokemon(nombrePokemon, pociones, antidotos, ataques);
-    
-     System.out.println(miPokemon.getAtaques()[1].getNombre());
      
      return miPokemon;
-     
-      
-
-
 
 }
 }

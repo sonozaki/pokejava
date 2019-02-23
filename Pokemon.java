@@ -1,13 +1,32 @@
+/*  Copyright 2019 Francisco Dominguez Lerma
+ 	Author: Francisco Dominguez Lerma
+  
+    This file is part of PokeJava.
+
+    PokeJava is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 2 of the License, or
+    (at your option) any later version.
+
+    PokeJava is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with PokeJava.  If not, see <https://www.gnu.org/licenses/>.*/
+
 import java.util.Scanner;
-import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.Random;
 
 public class Pokemon{
-  String nombre;
-  int pv;
-  int pociones;
-  String estado;
-  int antidotos;
+  private String nombre;
+  private int pv;
+  private int pociones;
+  private String estado="";
+  private int antidotos;
+  private int daño;
 
   Ataque[] ataques;
   Scanner sc=new Scanner(System.in);
@@ -21,17 +40,11 @@ public class Pokemon{
 	    this.pociones=pociones;
 	    this.antidotos=antidotos;
 	    this.ataques=ataques;
-	    
-	  //  System.out.println(this.ataques[1].getNombre());
 
 	  }
   
   public String getNombre() {
 	return this.nombre;
-}
-
-public void setNombre(String nombre) {
-	this.nombre = nombre;
 }
 
 public int getPv() {
@@ -46,10 +59,6 @@ public int getPociones() {
 	return this.pociones;
 }
 
-public void setPociones(int pociones) {
-	this.pociones = pociones;
-}
-
 public String getEstado() {
 	return this.estado;
 }
@@ -62,21 +71,9 @@ public int getAntidotos() {
 	return this.antidotos;
 }
 
-public void setAntidotos(int antidotos) {
-	this.antidotos = antidotos;
-}
-
-public Ataque[] getAtaques() {
-	return this.ataques;
-}
-
-public void setAtaques(Ataque[] ataques) {
-	this.ataques = ataques;
-}
-
 
   public void recibirDaño(int daño){
-    this.pv-=daño;
+    this.setPv(this.getPv()-daño);
   }
 
   public void atacar(Pokemon pokemonEnemigo){
@@ -85,19 +82,41 @@ public void setAtaques(Ataque[] ataques) {
     int ataqueSeleccionado;
     aleatorio.setSeed(System.currentTimeMillis());
 
+    //Menu para seleccionar ataque
      for(Ataque ataque: ataques){
-        System.out.println(index+"- "+ataque.getNombre()+ " pp:"+ataque.getPp());
+        System.out.println(index+1+" - "+ataque.getNombre()+ " pp:"+ataque.getPp());
         index++;
      }
-     System.out.print("Elige ataque a usar [0 - 3] --> ");
+     System.out.print("Elige ataque a usar [1 - 4] --> ");
 
-     ataqueSeleccionado=sc.nextInt();
-  
-    int daño=aleatorio.nextInt((ataques[ataqueSeleccionado].getPdMax()-ataques[ataqueSeleccionado].getPdMin())+ataques[ataqueSeleccionado].getPdMin());
+     ataqueSeleccionado=sc.nextInt()-1;
+     
+     //Si el pokemon está paralizado
+     if(!(this.getEstado().equals("")) && ThreadLocalRandom.current().nextInt(1,3)==1) {
+    	 System.out.println("El pokemon está en estado "+this.getEstado()+" no se puede mover");
+    	 return;
+     }
+     
+     //Calculamos el daño entre el rango del ataque
+     try {
+    	 daño=ThreadLocalRandom.current().nextInt(ataques[ataqueSeleccionado].getPdMin(), ataques[ataqueSeleccionado].getPdMax() + 1);
+     } catch(IllegalArgumentException ex) {
+    	 System.out.println("ERROR: pdMax debe ser siempre mayor a pdMin en el fichero .pkm");
+    	 System.exit(1);
+     }
 
     pokemonEnemigo.recibirDaño(daño);
 
-    System.out.println("Se ha usado el ataque "+ataques[ataqueSeleccionado].getNombre()+ " producido un daño de "+daño+" al pokemon enemigo");
+    System.out.println("Se ha usado el ataque "+ataques[ataqueSeleccionado].getNombre()+ " produciendo un daño de "+daño+" al pokemon enemigo");
+    
+    //Si el ataque que hemos usado puede paralizar al enemigo
+    if(!(ataques[ataqueSeleccionado].getEstado().equals("\"\"")) && ThreadLocalRandom.current().nextInt(1,3)==1 
+    		&& pokemonEnemigo.getEstado().equals("")) {
+    	
+    	pokemonEnemigo.setEstado(ataques[ataqueSeleccionado].getEstado());
+    	System.out.println("El pokemon enemigo pasa al estado "+pokemonEnemigo.getEstado());
+    }
+    
   }
 
   public void curarse(){
@@ -114,25 +133,28 @@ public void setAtaques(Ataque[] ataques) {
   public void antidoto(){
 
     if(this.antidotos>0){
-    this.estado="";
-    this.antidotos--;
-    System.out.println("Pokemon de vuelta a la normalidad");
+    	this.estado="";
+    	this.antidotos--;
+    	System.out.println("Pokemon de vuelta a la normalidad");
     } else {
-    System.out.println("No tienes antidotos");
+    	System.out.println("No tienes antidotos");
     }
   }
  public void informacion(Pokemon pokemonEnemigo){
- System.out.println("----- Informacion de la partida -----");
- System.out.println("PV: "+ this.pv);
- System.out.println("Pociones "+ this.pociones);
- System.out.println("Antidotos "+ this.antidotos);
-
- for(Ataque ataque: ataques){
-        System.out.println(ataque.nombre);
-        System.out.println("\tpp "+ataque.pp);
-        System.out.println("\tpdMax "+ataque.pdMax);
-        System.out.println("\tpdMin "+ataque.pdMin);
-     }
- }
+	 System.out.println("");
+	 System.out.println("----- Informacion de la partida -----");
+	 System.out.println("PV: "+ this.getPv());
+	 System.out.println("PV Enemigo: "+ pokemonEnemigo.getPv());
+	 System.out.println("Pociones: "+ this.getPociones());
+	 System.out.println("Antidotos: "+ this.getAntidotos());
+	 System.out.println("\nAtaques: \n");
+	
+	 for(Ataque ataque: ataques){
+	        System.out.println("\t"+ataque.getNombre());
+	        System.out.println("\t\tpp: "+ataque.getPp());
+	        System.out.println("\t\tpdMax: "+ataque.getPdMax());
+	        System.out.println("\t\tpdMin: "+ataque.getPdMin()+"\n");
+	     }
+	 }
 
 }

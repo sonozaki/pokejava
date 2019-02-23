@@ -1,27 +1,27 @@
 nombre=infernape
-pociones=5
-antidotos=5
+pociones=2
+antidotos=3
 
 ataque1_nombre=placaje
-ataque1_pp=5
-ataque1_pdMax=22
-ataque1_pdMin=12
+ataque1_pp=12
+ataque1_pdMin=5
+ataque1_pdMax=18
 ataque1_estado=""
 
 ataque2_nombre=ruedaDeFuego
-ataque2_pp=4
-ataque2_pdMax=35
-ataque2_pdMin=23
-ataque2_estado=""
+ataque2_pp=8
+ataque2_pdMin=12
+ataque2_pdMax=22
+ataque2_estado=quemado
 
 ataque3_nombre=lluviaDeFuego
-ataque3_pp=2
-ataque3_pdMax=55
-ataque3_pdMin=45
-ataque3_estado=quemado
+ataque3_pp=8
+ataque3_pdMin=14
+ataque3_pdMax=20
+ataque3_estado=""
 
 ataque4_nombre=golpeDestructor
-ataque4_pp=5
-ataque4_pdMax=45
-ataque4_pdMin=34
+ataque4_pp=12
+ataque4_pdMin=8
+ataque4_pdMax=18
 ataque4_estado=""

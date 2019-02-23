@@ -1,27 +1,39 @@
+#El nombre del pokemon
 nombre=pikachu
+#pociones que tiene el pokemon
 pociones=2
+#antidotos que tiene el pokemon
 antidotos=2
 
+#pp son las veces que puedes usar el ataque
+#pdMax el maximo daño que realizará el ataque
+#pdMin el minimo daño que realizará el ataque
+#estado indica que en el caso de que no sea "" paralizará al pokemon enemigo
+
+#propiedades del primer ataque
 ataque1_nombre=placaje
-ataque1_pp=5
-ataque1_pdMax=22
-ataque1_pdMin=12
+ataque1_pp=12
+ataque1_pdMax=14
+ataque1_pdMin=4
 ataque1_estado=""
 
+#propiedades del segundo ataque
 ataque2_nombre=rayoElectrico
-ataque2_pp=4
-ataque2_pdMax=35
-ataque2_pdMin=23
+ataque2_pp=7
+ataque2_pdMax=25
+ataque2_pdMin=15
 ataque2_estado=paralizado
 
-ataque3_nombre=p3
-ataque3_pp=2
-ataque3_pdMax=55
-ataque3_pdMin=45
+#propiedades del tercer ataque
+ataque3_nombre=relampago
+ataque3_pp=10
+ataque3_pdMax=20
+ataque3_pdMin=10
 ataque3_estado=""
 
-ataque4_nombre=p4
-ataque4_pp=5
-ataque4_pdMax=45
-ataque4_pdMin=34
+#propiedades del cuarto ataque
+ataque4_nombre=golpe de furia
+ataque4_pp=6
+ataque4_pdMax=30
+ataque4_pdMin=4
 ataque4_estado=""
