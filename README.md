@@ -10,7 +10,7 @@ En comparación con Poketty, PokeJava aún no incorpora un modo contra la CPU, a
 
 No he encontrado una forma sencilla y portable de colorear la consola en Java.
 
-# ¿Como cargo mis propios pokemons?
+# ¿Cómo cargo mis propios pokemons?
 
 PokeJava funciona con ficheros .pkm, con una sintaxis de "clave=valor" donde se guardan los atributos de cada pokemon, así como sus ataques.
 
