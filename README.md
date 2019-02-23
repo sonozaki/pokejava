@@ -10,6 +10,22 @@ En comparación con Poketty, PokeJava aún no incorpora un modo contra la CPU, a
 
 No he encontrado una forma sencilla y portable de colorear la consola en Java.
 
+# ¿Cómo compilo y ejecuto Pokejava?
+
+Primero clonar el proyecto con:
+
+```
+git clone https://github.com/sonozaki/pokejava
+```
+Dentro del directorio, compilar con:
+```
+javac *.java
+```
+Para ejecutarlo hay que pasarle como argumentos los ficheros pkm a cargar:
+```
+java Pokejava pikachu.pkm infernape.pkm
+```
+
 # ¿Cómo cargo mis propios pokemons?
 
 PokeJava funciona con ficheros .pkm, con una sintaxis de "clave=valor" donde se guardan los atributos de cada pokemon, así como sus ataques.

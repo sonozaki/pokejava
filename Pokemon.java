@@ -26,7 +26,7 @@ public class Pokemon{
   private int pociones;
   private String estado="";
   private int antidotos;
-  private int daño;
+  private int danio;
 
   Ataque[] ataques;
   Scanner sc=new Scanner(System.in);
@@ -72,8 +72,8 @@ public int getAntidotos() {
 }
 
 
-  public void recibirDaño(int daño){
-    this.setPv(this.getPv()-daño);
+  public void recibirDanio(int danio){
+    this.setPv(this.getPv()-danio);
   }
 
   public void atacar(Pokemon pokemonEnemigo){
@@ -91,23 +91,23 @@ public int getAntidotos() {
 
      ataqueSeleccionado=sc.nextInt()-1;
      
-     //Si el pokemon está paralizado
+     //Si el pokemon estÃ¡ paralizado
      if(!(this.getEstado().equals("")) && ThreadLocalRandom.current().nextInt(1,3)==1) {
-    	 System.out.println("El pokemon está en estado "+this.getEstado()+" no se puede mover");
+    	 System.out.println("El pokemon estÃ¡ en estado "+this.getEstado()+" no se puede mover");
     	 return;
      }
      
-     //Calculamos el daño entre el rango del ataque
+     //Calculamos el danio entre el rango del ataque
      try {
-    	 daño=ThreadLocalRandom.current().nextInt(ataques[ataqueSeleccionado].getPdMin(), ataques[ataqueSeleccionado].getPdMax() + 1);
+    	 danio=ThreadLocalRandom.current().nextInt(ataques[ataqueSeleccionado].getPdMin(), ataques[ataqueSeleccionado].getPdMax() + 1);
      } catch(IllegalArgumentException ex) {
     	 System.out.println("ERROR: pdMax debe ser siempre mayor a pdMin en el fichero .pkm");
     	 System.exit(1);
      }
 
-    pokemonEnemigo.recibirDaño(daño);
+    pokemonEnemigo.recibirDanio(danio);
 
-    System.out.println("Se ha usado el ataque "+ataques[ataqueSeleccionado].getNombre()+ " produciendo un daño de "+daño+" al pokemon enemigo");
+    System.out.println("Se ha usado el ataque "+ataques[ataqueSeleccionado].getNombre()+ " produciendo un danio de "+danio+" al pokemon enemigo");
     
     //Si el ataque que hemos usado puede paralizar al enemigo
     if(!(ataques[ataqueSeleccionado].getEstado().equals("\"\"")) && ThreadLocalRandom.current().nextInt(1,3)==1 
