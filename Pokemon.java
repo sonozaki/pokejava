@@ -18,6 +18,7 @@
 
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.InputMismatchException;
 
 public class Pokemon{
   private String nombre;
@@ -77,26 +78,34 @@ public int getAntidotos() {
 	 
     int index;
     int ataqueSeleccionado=0;
+    boolean repetirMenuAtaqueSeleccionado;
 	
 	do {
 		index=0;
+		repetirMenuAtaqueSeleccionado=false;
 		//Menu para seleccionar ataque
 		 for(Ataque ataque: ataques){
 			System.out.println(index+1+" - "+ataque.getNombre()+ " pp:"+ataque.getPp());
 			index++;
 		 }
 		 System.out.print("Elige ataque a usar [1 - 4] --> ");
-		 
-		 ataqueSeleccionado=sc.nextInt()-1;
+                //Si la entrada no es un numero entero
+		try{
+		 	ataqueSeleccionado=sc.nextInt()-1;
+		}
+		catch(InputMismatchException ex){
+			//Vacio el buffer de scanner
+			sc.nextLine();
+			System.out.println("\nDebes introducir un numero\n");
+			repetirMenuAtaqueSeleccionado=true;
+		}
 		 //Si el ataque es incorrecto
 		 if(ataqueSeleccionado<0 || ataqueSeleccionado>3){
-		 
-		 System.out.println("\nEl ataque introducido no es correcto, vuelve a intentarlo\n");
-		 continue;
-		 
-		 }
+		 	System.out.println("\nEl ataque introducido no es correcto, vuelve a intentarlo\n");
+			repetirMenuAtaqueSeleccionado=true;
+		}
 	 
-	} while(ataqueSeleccionado<0 || ataqueSeleccionado>3);
+	} while(repetirMenuAtaqueSeleccionado);
      
      //Si el pokemon está paralizado
      if(!(this.getEstado().equals("")) && ThreadLocalRandom.current().nextInt(1,3)==1) {
