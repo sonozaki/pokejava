@@ -54,19 +54,17 @@ public class Pokejava{
 	    while(pokemon1.getPv()>0 && pokemon2.getPv()>0) {
 	    
 	      if(!turno) {
-	    	  System.out.println("");
 	    	  if(pokemon1.getEstado().equals("")) {
-	    		  System.out.print("[pv:"+pokemon1.getPv()+"]["+pokemon1.getNombre()+"] --> ");
+	    		  System.out.print("\n[pv:"+pokemon1.getPv()+"]["+pokemon1.getNombre()+"] --> ");
 	    	  } else {
-	    		  System.out.print("[pv:"+pokemon1.getPv()+"]["+pokemon1.getEstado()+"]["+pokemon1.getNombre()+"] --> ");
+	    		  System.out.print("\n[pv:"+pokemon1.getPv()+"]["+pokemon1.getEstado()+"]["+pokemon1.getNombre()+"] --> ");
 	    	  }
 	      }
 	      else {
-	    	  System.out.println("");
 	    	  if(pokemon2.getEstado().equals("")) {
-	    		  System.out.print("[pv:"+pokemon2.getPv()+"]["+pokemon2.getNombre()+"] --> ");
+	    		  System.out.print("\n[pv:"+pokemon2.getPv()+"]["+pokemon2.getNombre()+"] --> ");
 	    	  } else {
-	    		  System.out.print("[pv:"+pokemon2.getPv()+"]["+pokemon2.getEstado()+"]["+pokemon2.getNombre()+"] --> ");
+	    		  System.out.print("\n[pv:"+pokemon2.getPv()+"]["+pokemon2.getEstado()+"]["+pokemon2.getNombre()+"] --> ");
 	    	  }
 	    	  
 	    }
