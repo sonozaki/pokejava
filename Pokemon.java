@@ -157,8 +157,7 @@ public int getAntidotos() {
     }
   }
  public void informacion(Pokemon pokemonEnemigo){
-	 System.out.println("");
-	 System.out.println("----- Informacion de la partida -----");
+	 System.out.println("\n----- Informacion de la partida -----");
 	 System.out.println("PV: "+ this.getPv());
 	 System.out.println("PV Enemigo: "+ pokemonEnemigo.getPv());
 	 System.out.println("Pociones: "+ this.getPociones());

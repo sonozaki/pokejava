@@ -22,11 +22,11 @@ import java.util.Random;
 public class Pokejava{
 
 	public static void main(String[] args){
-		Scanner sc;
-		Pokemon pokemon1=null;
-		Pokemon pokemon2=null;
+	    Scanner sc;
+	    Pokemon pokemon1=null;
+	    Pokemon pokemon2=null;
 	    boolean turno=false;
-	    
+
 	    try {
 	    if(args[0].equals("--help")){
 	      System.out.println("Como usar pokejava:");
@@ -35,7 +35,7 @@ public class Pokejava{
 	      System.out.println("java Pokejava pikachu.pkm infernape.pkm");
 		  System.exit(0);
 	    }
-	    
+ 
 	     //Creamos los objetos pokemon
 	     pokemon1=Ficheros.cargarFichero(args[0]);
 	     pokemon2=Ficheros.cargarFichero(args[1]);
@@ -95,8 +95,7 @@ public class Pokejava{
 	          System.exit(0);
 	          break;
 	      case "ayuda":
-	    	  System.out.println("");
-	          System.out.println("---- AYUDA -----");
+	          System.out.println("\n---- AYUDA -----");
 	          System.out.println("atacar\t permite atacar al pokemon enemigo");
 	          System.out.println("pocion\t utiliza la pocion para curar a tu pokemon");
 	          System.out.println("antidoto\t utiliza el antidoto para restablecer el estado del pokemon");
@@ -113,14 +112,12 @@ public class Pokejava{
 	          }
 	      }
 	    
-	    if(pokemon1.getPv()>0) {
-	    	System.out.println("");
-	    	System.out.println("--- El pokemon "+pokemon1.getNombre()+" ha ganado la partida ---");
-	    }
-	    else if(pokemon2.getPv()>0) {
-	    	System.out.println("");
-	    	System.out.println("--- El pokemon "+pokemon2.getNombre()+" ha ganado la partida ---");
-	    }
+	    if(pokemon1.getPv()>0) 
+	    	System.out.println("\n--- El pokemon "+pokemon1.getNombre()+" ha ganado la partida ---");
+	    
+	    else if(pokemon2.getPv()>0)
+	    	System.out.println("\n--- El pokemon "+pokemon2.getNombre()+" ha ganado la partida ---");
+	    
 	
 	    }
 
