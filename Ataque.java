@@ -53,5 +53,9 @@ public class Ataque {
 	public String getEstado() {
 		return estado;
 	}
+	
+	public void setPp(int pp){
+		this.pp=pp;
+	}
   
 }

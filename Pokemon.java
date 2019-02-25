@@ -121,7 +121,12 @@ public int getAntidotos() {
     	 System.exit(1);
      }
 
+	if(ataques[ataqueSeleccionado].getPp()<=0){
+		System.out.println("Ya has gastado este ataque, no lo puedes usar");
+		return;
+	}
     pokemonEnemigo.recibirDanio(danio);
+	ataques[ataqueSeleccionado].setPp(ataques[ataqueSeleccionado].getPp()-1);
 
     System.out.println("Se ha usado el ataque "+ataques[ataqueSeleccionado].getNombre()+ " produciendo un danio de "+danio+" al pokemon enemigo");
     
