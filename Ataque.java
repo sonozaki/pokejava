@@ -17,24 +17,24 @@
     along with PokeJava.  If not, see <https://www.gnu.org/licenses/>.*/
 
 public class Ataque {
-	
-	  private String nombre;
-	  private int pp;
-	  
-	  private int pdMin;
-	  private int pdMax;
 
-	  private String estado;
+	private String nombre;
+	private int pp;
 
-	  public Ataque(String nombre, int pp, int pdMax, int pdMin, String estado) {
-	    this.nombre=nombre;
-	    this.pp=pp;
-	    this.pdMax=pdMax;
-	    this.pdMin=pdMin;
-	    this.estado=estado;
-	  }
+	private int pdMin;
+	private int pdMax;
 
-  public String getNombre() {
+	private String estado;
+
+	public Ataque(String nombre, int pp, int pdMax, int pdMin, String estado) {
+		this.nombre = nombre;
+		this.pp = pp;
+		this.pdMax = pdMax;
+		this.pdMin = pdMin;
+		this.estado = estado;
+	}
+
+	public String getNombre() {
 		return nombre;
 	}
 
@@ -53,9 +53,9 @@ public class Ataque {
 	public String getEstado() {
 		return estado;
 	}
-	
-	public void setPp(int pp){
-		this.pp=pp;
+
+	public void setPp(int pp) {
+		this.pp = pp;
 	}
-  
+
 }
