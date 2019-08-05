@@ -51,14 +51,15 @@ public class Ficheros {
 			prop.load(is);
 		} catch (IOException e1) {
 			System.out.println("Error abriendo fichero " + pokemon);
-			System.exit(1);
 			e1.printStackTrace();
+			System.exit(1);
 		} finally {
 			try {
 				is.close();
 			} catch (IOException e) {
 				System.out.println("Error cerrando fichero " + pokemon);
 				e.printStackTrace();
+				System.exit(1);
 			}
 		}
 
