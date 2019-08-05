@@ -1,7 +1,7 @@
 
 /*  Copyright 2019 Francisco Dominguez Lerma
  	Author: Francisco Dominguez Lerma
-  
+
     This file is part of PokeJava.
 
     PokeJava is free software: you can redistribute it and/or modify
@@ -26,10 +26,9 @@ public class Ficheros {
 
 	public static Pokemon cargarFichero(String pokemon){
 
-		
 		Properties prop = new Properties();
 		InputStream is = null;
-		
+
 		// Atributos de pokemon
 		String nombrePokemon = new String();
 		int pociones = 0;
@@ -44,55 +43,55 @@ public class Ficheros {
 		int[] pdMin = new int[4];
 
 		Pokemon miPokemon;
-		
+
 		//Abrimos el fichero
-      
+
+		try {
+			is = new FileInputStream(pokemon);
+			prop.load(is);
+		} catch (IOException e1) {
+			System.out.println("Error abriendo fichero " + pokemon);
+			System.exit(1);
+			e1.printStackTrace();
+		} finally {
 			try {
-				is = new FileInputStream(pokemon);
-				prop.load(is);
-			} catch (IOException e1) {
-				System.out.println("Error abriendo fichero " + pokemon);
-				System.exit(1);
-				e1.printStackTrace();
-			} finally {
-				try {
-					is.close();
-				} catch (IOException e) {
-					System.out.println("Error cerrando fichero " + pokemon);
-					e.printStackTrace();
-				}
+				is.close();
+			} catch (IOException e) {
+				System.out.println("Error cerrando fichero " + pokemon);
+				e.printStackTrace();
 			}
-        
-        nombrePokemon = prop.getProperty("nombre");
-        
-        pociones = Integer.parseInt(prop.getProperty("pociones"));
-        
-        antidotos = Integer.parseInt(prop.getProperty("antidotos"));
-        
-        nombreAtaque[0]=prop.getProperty("ataque1_nombre");
-        nombreAtaque[1]=prop.getProperty("ataque2_nombre");
-        nombreAtaque[2]=prop.getProperty("ataque3_nombre");
-        nombreAtaque[3]=prop.getProperty("ataque4_nombre");
-        
-        estadoAtaque[0]=prop.getProperty("ataque1_estado");
-        estadoAtaque[1]=prop.getProperty("ataque2_estado");
-        estadoAtaque[2]=prop.getProperty("ataque3_estado");
-        estadoAtaque[3]=prop.getProperty("ataque4_estado");
-        
-        pp[0]=Integer.parseInt(prop.getProperty("ataque1_pp"));
-        pp[1]=Integer.parseInt(prop.getProperty("ataque2_pp"));
-        pp[2]=Integer.parseInt(prop.getProperty("ataque3_pp"));
-        pp[3]=Integer.parseInt(prop.getProperty("ataque4_pp"));
-        
-        pdMax[0]=Integer.parseInt(prop.getProperty("ataque1_pdMax"));
-        pdMax[1]=Integer.parseInt(prop.getProperty("ataque2_pdMax"));
-        pdMax[2]=Integer.parseInt(prop.getProperty("ataque3_pdMax"));
-        pdMax[3]=Integer.parseInt(prop.getProperty("ataque4_pdMax"));
-        
-        pdMin[0]=Integer.parseInt(prop.getProperty("ataque1_pdMin"));
-        pdMin[1]=Integer.parseInt(prop.getProperty("ataque2_pdMin"));
-        pdMin[2]=Integer.parseInt(prop.getProperty("ataque3_pdMin"));
-        pdMin[3]=Integer.parseInt(prop.getProperty("ataque4_pdMin"));
+		}
+
+		nombrePokemon = prop.getProperty("nombre");
+
+		pociones = Integer.parseInt(prop.getProperty("pociones"));
+
+		antidotos = Integer.parseInt(prop.getProperty("antidotos"));
+
+		nombreAtaque[0]=prop.getProperty("ataque1_nombre");
+		nombreAtaque[1]=prop.getProperty("ataque2_nombre");
+		nombreAtaque[2]=prop.getProperty("ataque3_nombre");
+		nombreAtaque[3]=prop.getProperty("ataque4_nombre");
+
+		estadoAtaque[0]=prop.getProperty("ataque1_estado");
+		estadoAtaque[1]=prop.getProperty("ataque2_estado");
+		estadoAtaque[2]=prop.getProperty("ataque3_estado");
+		estadoAtaque[3]=prop.getProperty("ataque4_estado");
+
+		pp[0]=Integer.parseInt(prop.getProperty("ataque1_pp"));
+		pp[1]=Integer.parseInt(prop.getProperty("ataque2_pp"));
+		pp[2]=Integer.parseInt(prop.getProperty("ataque3_pp"));
+		pp[3]=Integer.parseInt(prop.getProperty("ataque4_pp"));
+
+		pdMax[0]=Integer.parseInt(prop.getProperty("ataque1_pdMax"));
+		pdMax[1]=Integer.parseInt(prop.getProperty("ataque2_pdMax"));
+		pdMax[2]=Integer.parseInt(prop.getProperty("ataque3_pdMax"));
+		pdMax[3]=Integer.parseInt(prop.getProperty("ataque4_pdMax"));
+
+		pdMin[0]=Integer.parseInt(prop.getProperty("ataque1_pdMin"));
+		pdMin[1]=Integer.parseInt(prop.getProperty("ataque2_pdMin"));
+		pdMin[2]=Integer.parseInt(prop.getProperty("ataque3_pdMin"));
+		pdMin[3]=Integer.parseInt(prop.getProperty("ataque4_pdMin"));
 
 
 		// Creamos los ataques
